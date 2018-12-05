@@ -7,18 +7,21 @@ public class Day1Part2{
     String filename;
     Set<Integer> frequencies;
     int currentFrequency;
+    int loopcounter;
     
     public Day1Part2(){
         answer = 0;
         filename = "Day1Input.txt";
         frequencies = new HashSet<Integer>();
         currentFrequency = 0;
+        loopcounter = 0;
     }
     
     public void calculateFrequency(){
         boolean answerfound = false;
         while(!answerfound){
-            try(BufferedReader br = new BufferedReader(new FileReader("Day1Input.txt"))) {
+            loopcounter++;
+            try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
                 for(String line; (line = br.readLine()) != null; ) {
                     if(line.charAt(0) == '+'){
                         currentFrequency = currentFrequency + Integer.parseInt(line.substring(1));
@@ -28,7 +31,7 @@ public class Day1Part2{
                         //Do nothing, must be a zero
                     }
                     
-                    System.out.println("Current frequency: " + currentFrequency);
+                    //System.out.println("Current frequency: " + currentFrequency);
                     if(frequencies.add(new Integer(currentFrequency)) == false){
                         answer = currentFrequency;
                         answerfound = true;
@@ -45,6 +48,7 @@ public class Day1Part2{
         System.out.println("_________________________");
         System.out.println("_________________________");
         System.out.println("Solution is: " + answer);
+        System.out.println("Amount of loops done: " + loopcounter);
     }
     
     public static void main(String[] args){

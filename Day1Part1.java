@@ -10,7 +10,7 @@ public class Day1Part1{
     }
     
     public void calculateFrequency(){
-        try(BufferedReader br = new BufferedReader(new FileReader("Day1Input.txt"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
             for(String line; (line = br.readLine()) != null; ) {
                 if(line.charAt(0) == '+'){
                     answer = answer + Integer.parseInt(line.substring(1));
